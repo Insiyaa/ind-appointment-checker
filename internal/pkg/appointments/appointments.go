@@ -40,7 +40,7 @@ func makeURLs(productKey string, cities map[string]models.City, persons int) []m
 }
 
 // Process fetches availabilities for every URL.
-// A delay of 200ms is set between HTTP calls to ensure a light load on IND's servers.
+// A delay of 300000ms is set between HTTP calls to ensure a light load on IND's servers.
 func Process(c client.Client, urls []models.URL) []models.Availabilities {
 	var xa []models.Availabilities
 	for _, u := range urls {
@@ -50,7 +50,7 @@ func Process(c client.Client, urls []models.URL) []models.Availabilities {
 			continue
 		}
 		xa = append(xa, a)
-		time.Sleep(200 * time.Millisecond)
+		time.Sleep(300000 * time.Millisecond)
 	}
 
 	for _, availabilities := range xa {
